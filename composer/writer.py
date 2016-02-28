@@ -1,6 +1,5 @@
 # coding: utf-8
 
-import subprocess
 import os
 
 import celery
@@ -23,5 +22,4 @@ def write(song_key):
     midi.write()
     midi.close()
 
-    writer_script = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'writer.sh')
-    subprocess.call([writer_script, song.midi_file, song.mp3_file])
+    os.system('timidity -Ow -o - {} | lame - {}'.format(song.midi_file, song.mp3_file))
