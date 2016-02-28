@@ -12,7 +12,7 @@ from models import Song
 
 
 def index(request):
-    return render_to_response('index.html', {
+    return render_to_response('composer/index.html', {
         'song_count': Song.objects.count()
     })
 
@@ -27,6 +27,6 @@ def song(request, key):
     if not os.path.isfile(song.mp3_file) and song.is_composed:
         writer.write(key)
 
-    return render_to_response('song.html', {
+    return render_to_response('composer/song.html', {
         'song': song,
     }, RequestContext(request))
