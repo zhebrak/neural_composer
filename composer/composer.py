@@ -15,6 +15,10 @@ import writer
 from settings import MEMORY_LENGTH, MAX_SONG_LENGTH, MODEL_ARC_PATH, MODEL_CHARS_PATH, MODEL_WEIGHTS_PATH
 
 
+class WriterException(Exception):
+    pass
+
+
 model = None
 
 
@@ -67,8 +71,12 @@ def compose_async(song_key):
                 song.song = generated.rstrip('$')
                 song.save()
 
-                writer.write(song_key)
-                return
+                try:
+                    writer.write(song_key)
+                except WriterException:
+                    break
+                else:
+                    return
 
             if len(generated) > MAX_SONG_LENGTH:
                 break

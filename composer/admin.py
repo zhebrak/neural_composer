@@ -7,7 +7,7 @@ from models import Song
 
 
 class SongAdmin(admin.ModelAdmin):
-    list_display = ['key', 'is_composed', 'url']
+    list_display = ['key', 'is_composed', 'created_at', 'url']
 
     def url(self, obj):
         return '<a href="{}" target="_blank">Link</a>'.format(reverse('composer_song', kwargs={'key': obj.key}))
