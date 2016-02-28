@@ -37,7 +37,7 @@ def get_model():
 def compose():
     song = Song.create()
     compose_async.delay(song.key)
-    return song.key
+    return song
 
 
 @celery.task

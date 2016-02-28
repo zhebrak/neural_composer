@@ -12,6 +12,8 @@ from django.conf import settings
 
 
 class Song(models.Model):
+    KEY_LENGTH = 10
+
     key = models.CharField(max_length=10, unique=True, verbose_name=u'уникальный ключ песни')
     song = models.TextField(blank=True, null=True, verbose_name=u'песня')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=u'дата создания')
@@ -21,7 +23,7 @@ class Song(models.Model):
 
     @classmethod
     def create(cls):
-        key = hashlib.md5(str(random.random())).hexdigest()
+        key = hashlib.md5(str(random.random())).hexdigest()[:cls.KEY_LENGTH]
 
         song = Song(key=key)
         song.save()

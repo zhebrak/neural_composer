@@ -18,8 +18,8 @@ def index(request):
 
 
 def compose_song(requset):
-    song_key = composer.compose()
-    return redirect(reverse('composer_song', kwargs={'key': song_key}))
+    song = composer.compose()
+    return redirect(reverse('composer_song', kwargs={'key': song.key}))
 
 
 def song(request, key):
