@@ -17,4 +17,4 @@ MODEL_CHARS_PATH = os.path.join(MODEL_CONF_DIR, 'chars.txt')
 MODEL_ARC_PATH = os.path.join(MODEL_CONF_DIR, MODEL_ARC_FILE)
 MODEL_WEIGHTS_PATH = os.path.join(MODEL_CONF_DIR, 'model_weights_34.h5')
 
-SONG_STORE_PATH = '/tmp/composer/media/'
+SONG_STORE_PATH = '/opt/composer/media/'

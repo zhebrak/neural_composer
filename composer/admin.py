@@ -15,5 +15,3 @@ class SongAdmin(admin.ModelAdmin):
     url.allow_tags = True
 
 admin.site.register(Song, SongAdmin)
-
-

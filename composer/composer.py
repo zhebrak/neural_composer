@@ -63,16 +63,16 @@ def compose_async(song_key):
             next_index = utils.sample(preds, diversity)
             next_char = model.indices_char[next_index]
 
-            sentence = sentence[-MEMORY_LENGTH+1:] + next_char
+            sentence = sentence[-MEMORY_LENGTH + 1:] + next_char
             generated += next_char
 
             if generated.endswith('$$$'):
-                song = Song.objects.get(key=song_key)
-                song.song = generated.rstrip('$')
-                song.save()
-
                 try:
                     writer.write(song_key)
+
+                    song = Song.objects.get(key=song_key)
+                    song.song = generated.rstrip('$')
+                    song.save()
                 except WriterException:
                     break
                 else:

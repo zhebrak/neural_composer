@@ -46,10 +46,10 @@ next_chars = []
 
 for song in song_list:
     song = '#' * MEMORY_LENGTH + song + '$' * 7
-    for _ in range(0, learning_batch_size/len(song_list)):
-        start_index = random.randint(0, len(song)-MEMORY_LENGTH-1)
-        sentences.append(song[start_index:start_index+MEMORY_LENGTH])
-        next_chars.append(song[start_index+MEMORY_LENGTH])
+    for _ in range(0, learning_batch_size / len(song_list)):
+        start_index = random.randint(0, len(song) - MEMORY_LENGTH - 1)
+        sentences.append(song[start_index:start_index + MEMORY_LENGTH])
+        next_chars.append(song[start_index + MEMORY_LENGTH])
 
 print('sentences count:', len(sentences))
 
@@ -97,7 +97,7 @@ for iteration in range(1, 128):
             next_index = sample(preds, diversity)
             next_char = indices_char[next_index]
 
-            sentence = sentence[-MEMORY_LENGTH+1:] + next_char
+            sentence = sentence[-MEMORY_LENGTH + 1:] + next_char
             generated += next_char
 
             if len(generated) > 400 or generated.endswith('$$$'):
