@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <title>Neural Composer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
 </head>
 <body>
 
-<div style="margin: 30px auto; width: 50%; text-align: center;">
+<div style="margin: 30px auto; width: 50%; text-align: center; font-family: 'Inconsolata', monospace;">
     <h3>Songs composed: {{ song_count }}</h3>
     <a href="{% url 'composer_compose_song' %}"><button>Compose</button></a>
     <div style="margin-top: 30px;">
