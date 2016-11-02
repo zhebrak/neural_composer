@@ -68,11 +68,11 @@ def compose_async(song_key):
 
             if generated.endswith('$$$'):
                 try:
-                    writer.write(song_key)
-
                     song = Song.objects.get(key=song_key)
                     song.song = generated.rstrip('$')
                     song.save()
+                    
+                    writer.write(song_key)
                 except WriterException:
                     break
                 else:
